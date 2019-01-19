@@ -1,6 +1,6 @@
 {
-  "short_name": "signin_form",
-  "name": "signin_form",
+  "short_name": "SigninForm",
+  "name": "SigninForm",
   "icons": [
     {
       "src": "favicon.ico",

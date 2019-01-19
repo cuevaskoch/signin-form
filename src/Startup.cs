@@ -5,8 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SigninForm.Services;
+using Syncromatics.Configuration.Validation.Extensions;
 
-namespace signin_form
+namespace SigninForm
 {
     public class Startup
     {
@@ -27,6 +29,13 @@ namespace signin_form
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            var settings = Configuration.Get<Settings>();
+            settings.EnsureIsValid();
+            services.AddSingleton(settings);
+
+            services.AddScoped<IMemberDataService, GoogleSheetsMemberDataService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

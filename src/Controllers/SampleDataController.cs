@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace signin_form.Controllers
+namespace SigninForm.Controllers
 {
     [Route("api/[controller]")]
     public class SampleDataController : Controller
@@ -24,6 +24,13 @@ namespace signin_form.Controllers
                 TemperatureC = rng.Next(-20, 55),
                 Summary = Summaries[rng.Next(Summaries.Length)]
             });
+        }
+        
+        [HttpGet("[action]")]
+
+        public string SignInTest()
+        {
+            return "It worked.";
         }
 
         public class WeatherForecast
