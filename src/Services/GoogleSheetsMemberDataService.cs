@@ -19,8 +19,9 @@ namespace SigninForm.Services
             var trimmedEmail = emailAddress.Trim();
 
             var service = _sheetsServiceFactory.GetSheetsService(_settings.MemberDataGoogleSheetId);
-            var request =
-                service.Spreadsheets.Values.Get(_settings.MemberDataGoogleSheetId, _settings.MemberDataEmailRange);
+            var request = service.Spreadsheets.Values.Get(
+                _settings.MemberDataGoogleSheetId,
+                _settings.MemberDataEmailRange);
 
             var response = request.Execute();
             var isInGoodStanding = response.Values?
