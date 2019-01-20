@@ -1,5 +1,11 @@
 div.header {
   background-color: rgb(236, 31, 39);
+  margin-bottom: 30px;
+
+  padding: 30px;
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  color: white;
 }
