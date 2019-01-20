@@ -12,7 +12,7 @@ Installation instructions will go here.
 
 ## License
 
-GPL v3.  See [LICENSE.md](license.md).
+GPL v3.  See [LICENSE.md](LICENSE.md).
 
 ## TODO
 
