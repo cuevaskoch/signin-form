@@ -1,0 +1,5 @@
+div.header {
+  background-color: rgb(236, 31, 39);
+  display: flex;
+  align-items: center;
+}
