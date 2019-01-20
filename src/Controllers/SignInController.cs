@@ -23,7 +23,7 @@ namespace SigninForm.Controllers
         }
 
         [HttpPost]
-        public ActionResult<SignInResponse> SignIn(SignInModel signInModel)
+        public ActionResult<SignInResponse> SignIn([FromBody] SignInModel signInModel)
         {
             if (!ModelState.IsValid)
             {

@@ -18,6 +18,6 @@ namespace SigninForm.Models
         public string PhoneNumber { get; set; }
         
         [Required]
-        public DateTimeOffset Timestamp { get; set; }
+        public DateTimeOffset Timestamp { get; set; } = DateTimeOffset.Now;
     }
 }
