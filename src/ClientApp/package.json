@@ -18,8 +18,7 @@
     "redux": "^4.0.1",
     "redux-immutablejs": "0.0.8",
     "redux-thunk": "^2.3.0",
-    "rimraf": "^2.6.2",
-    "sheets-api": "^1.0.6"
+    "rimraf": "^2.6.2"
   },
   "devDependencies": {
     "ajv": "^6.0.0",
