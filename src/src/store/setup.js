@@ -17,14 +17,12 @@ const authorizationFailure = (error) => ({
 
 export const requestAuthorization = () => (dispatch) => {
   dispatch({ type: AUTH_REQUEST });
-
   const onSuccess = (authStatus) => {
     if (authStatus === true) {
       dispatch(authorizationStatus(authStatus));
     }
   };
   const onFailure = (error) => dispatch(authorizationFailure(error));
-
   api.auth.authenticate(onSuccess, onFailure);
 };
 

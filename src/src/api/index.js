@@ -1,7 +1,7 @@
 import auth from './auth';
-import signIn from './signIn';
+import signin from './signin';
 
 export default {
   auth,
-  signIn,
+  signin,
 };

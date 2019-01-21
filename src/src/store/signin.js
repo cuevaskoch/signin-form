@@ -5,32 +5,31 @@ const CLEAR = 'signin/clear';
 const REQUEST = 'signin/request';
 const STATUS = 'signin/status';
 
-const setStatus = (payload) => ({
-  type: STATUS,
-  payload,
-});
-
+const setStatus = (payload) => ({ type: STATUS, payload });
 export const clearSignIn = () => ({ type: CLEAR });
+
 export const logSignIn = formValues => dispatch => {
   dispatch({ type: REQUEST });
-
-  api.signIn.log(formValues)
+  api.signin.log(formValues)
     .then(() => {
       dispatch(setStatus({
         hasSignedIn: true,
+        isInGoodStandingPending: true,
       }));
+      return api.signin.getIsInGoodStanding(formValues);
     })
-    .catch(() => {
-      alert('failure!!!');
-    })
-
-}
+    .then((isInGoodStanding) => {
+      dispatch(setStatus({
+        isInGoodStandingPending: false,
+        isInGoodStanding,
+      }));
+    });
+};
 
 const emptyState = new Immutable.Map();
 const signingInState = new Immutable.Map({
   isPending: true,
 });
-
 const reducer = (state = emptyState, action) => {
   switch (action.type) {
     case STATUS:

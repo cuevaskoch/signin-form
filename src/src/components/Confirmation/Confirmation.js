@@ -1,15 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import InGoodStanding from './InGoodStanding';
+import NotInGoodStanding from './NotInGoodStanding';
+import Pending from './Pending';
+
+const getControl = (isInGoodStandingPending, isInGoodStanding) => {
+  if (isInGoodStandingPending) return <Pending />;
+  if (isInGoodStanding) return <InGoodStanding />;
+  return <NotInGoodStanding />;
+};
+
 const Confirmation = ({
-  isMemberInGoodStanding,
+  isInGoodStandingPending,
+  isInGoodStanding,
   onReset,
 }) => (
   <div className="container">
-    {isMemberInGoodStanding
-      ? <p>You are in good standing.</p>
-      : <p>You are not in good standing.</p>
-    }
+    {getControl(isInGoodStandingPending, isInGoodStanding)}
     <button className="btn btn-primary" onClick={onReset}>
       Sign in again
     </button>
@@ -17,7 +25,8 @@ const Confirmation = ({
 );
 
 Confirmation.propTypes = {
-  isMemberInGoodStanding: PropTypes.bool,
+  isInGoodStandingPending: PropTypes.bool,
+  isInGoodStanding: PropTypes.bool,
   onReset: PropTypes.func.isRequired,
 };
 Confirmation.defaultProps = {
