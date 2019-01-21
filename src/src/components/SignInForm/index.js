@@ -13,7 +13,9 @@ class SignInFormContainer extends Component {
 
   onSubmit = (formValues) => {
     console.log('formValues', formValues);
-    api.signIn.log(formValues);
+    api.signIn.log(formValues)
+      .then(() => alert('success!!!'))
+      .catch(() => alert('failure!!!'));
   }
 
   onSubmitError = () => {
