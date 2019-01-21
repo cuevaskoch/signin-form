@@ -4,6 +4,7 @@
 # Don't accidentally check in credentials.
 credentials.json
 token.json
+src/Properties/launchSettings.json
 
 # IDE
 .idea
