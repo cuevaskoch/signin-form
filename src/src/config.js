@@ -1,3 +1,5 @@
+export const CLIENT_ID = '882426312595-021gfngkdrjtb8foj2r4pmrf4iuhv93s.apps.googleusercontent.com';
+
 export const SIGNIN_LOG_SHEET_ID = '1BiKFLZVv1D4vNSeorpkkMwzZysL5L-33OVC5c4HZrJw';
 export const SIGNIN_LOG_RANGE = 'SignInLog!A1:E1';
 

@@ -1,9 +1,10 @@
 /* global gapi */
+import { CLIENT_ID } from '../config';
 
 const auth = {
   authenticate: (onAuthStatusChange, onAuthError = console.log) => {
     gapi.client.init({
-      clientId: '882426312595-021gfngkdrjtb8foj2r4pmrf4iuhv93s.apps.googleusercontent.com',
+      clientId: CLIENT_ID,
       scope: 'https://www.googleapis.com/auth/spreadsheets',
       discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
     }).then(() => {
