@@ -1,19 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
-const Confirmation = ({ isMemberInGoodStanding }) => (
-  <div>
+const Confirmation = ({
+  isMemberInGoodStanding,
+  onReset,
+}) => (
+  <div className="container">
     {isMemberInGoodStanding
       ? <p>You are in good standing.</p>
       : <p>You are not in good standing.</p>
     }
-    <Link to="/">Sign in again.</Link>
+    <button className="btn btn-primary" onClick={onReset}>
+      Sign in again
+    </button>
   </div>
 );
 
 Confirmation.propTypes = {
   isMemberInGoodStanding: PropTypes.bool,
+  onReset: PropTypes.func.isRequired,
 };
 Confirmation.defaultProps = {
   isMemberInGoodStanding: false,

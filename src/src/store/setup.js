@@ -1,22 +1,22 @@
 import Immutable from 'immutable';
-import api from '../../api';
+import api from '../api';
 
-const AUTHORIZATION_REQUEST = 'setup/auth/request';
-const AUTHORIZATION_STATUS = 'setup/auth/status';
-const AUTHORIZATION_FAILURE = 'setup/auth/failure';
+const AUTH_REQUEST = 'setup/auth/request';
+const AUTH_STATUS = 'setup/auth/status';
+const AUTH_FAILURE = 'setup/auth/failure';
 
 const authorizationStatus = (authStatus) => ({
-  type: AUTHORIZATION_STATUS,
+  type: AUTH_STATUS,
   payload: { authStatus },
  });
 
 const authorizationFailure = (error) => ({
-  type: AUTHORIZATION_FAILURE,
+  type: AUTH_FAILURE,
   payload: { error },
 });
 
 export const requestAuthorization = () => (dispatch) => {
-  dispatch({ type: AUTHORIZATION_REQUEST });
+  dispatch({ type: AUTH_REQUEST });
 
   const onSuccess = (authStatus) => {
     if (authStatus === true) {
@@ -30,19 +30,19 @@ export const requestAuthorization = () => (dispatch) => {
 
 const authReducer = (state = new Immutable.Map(), action) => {
   switch (action.type) {
-    case AUTHORIZATION_REQUEST:
+    case AUTH_REQUEST:
       return state.merge({
         isPending: true,
         isAuthorized: false,
         isFailure: false,
       });
-    case AUTHORIZATION_STATUS:
+    case AUTH_STATUS:
       return state.merge({
         isPending: false,
         isAuthorized: action.payload.authStatus,
         isFailure: false,
       });
-    case AUTHORIZATION_FAILURE:
+    case AUTH_FAILURE:
       return state.merge({
         isPending: false,
         isAuthorized: false,
@@ -55,9 +55,9 @@ const authReducer = (state = new Immutable.Map(), action) => {
 
 const reducer = (state = new Immutable.Map(), action) => {
   switch (action.type) {
-    case AUTHORIZATION_STATUS:
-    case AUTHORIZATION_REQUEST:
-    case AUTHORIZATION_FAILURE: {
+    case AUTH_STATUS:
+    case AUTH_REQUEST:
+    case AUTH_FAILURE: {
       const newState = authReducer(state.get('auth'), action);
       return state.set('auth', newState);
     }

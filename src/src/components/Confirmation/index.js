@@ -1,5 +1,10 @@
-import React from 'react';
+import { connect } from 'react-redux';
+import { clearSignIn } from '../../store/signin';
 import Confirmation from './Confirmation';
 
-export const InGoodStanding = () => <Confirmation isMemberInGoodStanding />;
-export const NotInGoodStanding = () => <Confirmation />;
+const mapStateToProps = () => ({});
+const mapDispatchToProps = {
+  onReset: clearSignIn,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Confirmation);
