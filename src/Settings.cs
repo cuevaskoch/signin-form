@@ -5,7 +5,10 @@ namespace SigninForm
     public class Settings
     {
         [Required]
-        public string SignInLogGoogleSheetId { get; set; } = "Some Default Value";
+        public string GoogleSheetsApiKey { get; set; }
+        
+        [Required]
+        public string SignInLogGoogleSheetId { get; set; }
 
         [Required]
         public string SignInLogRange { get; set; } = "SignInLog!A1:E1";
