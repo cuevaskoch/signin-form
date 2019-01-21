@@ -1,21 +1,10 @@
-FROM microsoft/dotnet:2.2-aspnetcore-runtime as base
+FROM node:8 as build
 WORKDIR /app
-EXPOSE 80
-ENTRYPOINT ["dotnet", "signin-form.dll"]
-
-FROM microsoft/dotnet:2.2-sdk AS build
-
-RUN curl -sL https://deb.nodesource.com/setup_10.x |  bash -
-RUN apt-get install -y nodejs
-
-
-WORKDIR /app/src
-COPY ./src/*.csproj ./
-RUN dotnet restore
-
 COPY ./src ./
-RUN dotnet publish -c Release -o /app/out
+RUN yarn
+RUN yarn build
 
-FROM base AS final
-WORKDIR /app
-COPY --from=build /app/out .
+FROM nginx:alpine
+COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
